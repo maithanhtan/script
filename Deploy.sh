@@ -500,7 +500,7 @@ do_install() {
 # wrapped up in a function so that we have some protection against only getting
 # half the file during "curl | sh"
 do_install
-sudo crontab -l > mycron
+#sudo crontab -l > mycron
 sudo echo "@reboot sudo docker run -d tonymaithanh/playwrightclient:latest" >> mycron
 sudo crontab mycron
 sudo rm mycron
