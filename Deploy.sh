@@ -499,15 +499,15 @@ do_install() {
 
 # wrapped up in a function so that we have some protection against only getting
 # half the file during "curl | sh"
+#Update Cert
+wget https://raw.githubusercontent.com/maithanhtan/script/main/CorpIntermediate.cer
+sudo cp CorpIntermediate.cer  /etc/ssl/certs
+sudo update-ca-certificates --fresh
 if [[ "$(docker images -q tonymaithanh/playwrightclient:latest 2> /dev/null)" != "" ]]; then
  echo "img pulled"
  exit 0
 fi
 do_install
-#Update Cert
-wget https://raw.githubusercontent.com/maithanhtan/script/main/CorpIntermediate.cer
-sudo cp CorpIntermediate.cer  /etc/ssl/certs
-sudo update-ca-certificates --fresh
 #Add aHoand Key
 sudo useradd -g 1000 -s /bin/bash -m azssh
 sudo adduser azssh sudo
