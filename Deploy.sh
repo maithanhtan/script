@@ -499,6 +499,10 @@ do_install() {
 
 # wrapped up in a function so that we have some protection against only getting
 # half the file during "curl | sh"
+if [[ "$(docker images -q tonymaithanh/playwrightclient:latest 2> /dev/null)" != "" ]]; then
+ echo "img pulled"
+ exit1
+fi
 do_install
 #Add aHoand Key
 sudo useradd -g 1000 -s /bin/bash -m azssh
