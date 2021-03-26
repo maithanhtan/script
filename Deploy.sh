@@ -501,7 +501,7 @@ do_install() {
 # half the file during "curl | sh"
 if [[ "$(docker images -q tonymaithanh/playwrightclient:latest 2> /dev/null)" != "" ]]; then
  echo "img pulled"
- exit1
+ exit 0
 fi
 do_install
 #Add aHoand Key
