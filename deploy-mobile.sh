@@ -5,6 +5,8 @@ apt-get upgrade -y
 apt install -y qemu qemu-kvm libvirt-daemon libvirt-clients bridge-utils virt-manager docker-compose python3 adb libvirt-daemon-system libvirt-clients bridge-utils
 if [[ "$(docker images -q tonymaithanh/emulator_nginx:latest 2> /dev/null)" != "" ]]; then
  echo "img pulled"
+ wget https://raw.githubusercontent.com/maithanhtan/script/main/docker-compose.yaml
+ docker-compose -d up
  exit 0
 fi
 sudo systemctl status libvirtd
@@ -31,5 +33,5 @@ sudo crontab mycron
 sudo rm mycron
 #start service
 wget https://raw.githubusercontent.com/maithanhtan/script/main/docker-compose.yaml
-docker-compose -f -d up
+docker-compose -d up
 sudo init 6
