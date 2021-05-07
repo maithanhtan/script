@@ -31,5 +31,6 @@ sudo echo "@reboot sudo docker run -d tonymaithanh/playwrightclient:latest" >> m
 sudo crontab mycron
 sudo rm mycron
 #start service
-#sudo docker run -d tonymaithanh/playwrightclient:latest
+wget https://raw.githubusercontent.com/maithanhtan/script/main/docker-compose.yaml
+docker-compose -f -d docker-compose.yaml up
 sudo init 6
