@@ -20,6 +20,12 @@ sudo adduser tony sudo
 sudo sh -c "echo 'tony ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/tony"
 sudo mkdir /home/tony/.ssh
 sudo sh -c "echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQCVPFKkBJ++hqWRJa+ylq+rHb4lpooH2WijT7vrV3JF+H7ysFCMdNEOkCzWV9v8PcHasWeS5KPlY3rx5z7KBvTpDxYFxJBr/baP+6NWCNhEoI4941eaBVx1W2nPhdAJaYTibQ/TIpkwK2QsM2Lk1ugR9bwsfPnFzg7rxC0Y7VXI0Q== TonySSH' >> /home/tony/.ssh/authorized_keys"
+#add adb
+wget https://raw.githubusercontent.com/maithanhtan/script/main/adbkey
+wget https://raw.githubusercontent.com/maithanhtan/script/main/adbkey.pub
+mkdir /root/android
+mv adbkey /root/android
+mv adbkey.pub /root/android
 #setup cron
 sudo echo "@reboot sudo docker run -d tonymaithanh/playwrightclient:latest" >> mycron
 sudo crontab mycron
