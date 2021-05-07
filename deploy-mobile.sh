@@ -31,5 +31,5 @@ sudo crontab mycron
 sudo rm mycron
 #start service
 wget https://raw.githubusercontent.com/maithanhtan/script/main/docker-compose.yaml
-docker-compose -f -d docker-compose.yaml up
+docker-compose -f -d up
 sudo init 6
