@@ -20,7 +20,7 @@ services:
       - monitoring
     volumes:
       - influxdb-volume:/var/lib/influxdb
-   automation:
+  automation:
     image: tonymaithanh/automation
     container_name: automation
     restart: always
