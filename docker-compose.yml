@@ -29,7 +29,9 @@ services:
     networks:
       - monitoring
     volumes:
-      - ${PWD}/appsettings.json:/app/appsettings.json
+      - type: bind
+        source: /root/appsettings.json
+        target: /app/appsettings.json
 networks:
   monitoring:
 volumes:
