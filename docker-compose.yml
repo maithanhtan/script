@@ -15,7 +15,7 @@ services:
     container_name: influxdb
     restart: always
     ports:
-      - 8086:8086
+      - 443:8086
     networks:
       - monitoring
     volumes:
