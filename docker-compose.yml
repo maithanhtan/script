@@ -28,6 +28,8 @@ services:
       - 80:80
     networks:
       - monitoring
+    volumes:
+      - ${PWD}/appsettings.json:/app/appsettings.json
 networks:
   monitoring:
 volumes:
