@@ -2,7 +2,7 @@ version: "3.2"
 services:
   Web_Cloud:
     image: tonymaithanh/webauto:latest
-    container_name: ${HOSTNAME}_Web_Cloud
+    container_name: Web_Cloud
     restart: always
     environment:
       - ClientTag=${HOSTNAME}_Web_Cloud
