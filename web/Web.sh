@@ -6,5 +6,5 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 sudo apt install docker-ce docker-compose wget -y
 cd /root
 wget https://raw.githubusercontent.com/maithanhtan/script/main/web/appsettings.json
-wget https://raw.githubusercontent.com/maithanhtan/script/main/web/appsettings.json
+wget https://raw.githubusercontent.com/maithanhtan/script/main/web/docker-compose.yml
 HOSTNAME=$HOSTNAME docker-compose up -d
