@@ -1,0 +1,16 @@
+version: "3.2"
+services:
+  Web_Cloud:
+    image: tonymaithanh/webauto:latest
+    container_name: ${HOSTNAME}_Web_Cloud
+    restart: always
+    environment:
+      - ClientTag=${HOSTNAME}_Web_Cloud
+    networks:
+      - monitoring
+    volumes:
+      - type: bind
+        source: /root/appsettings.json
+        target: /app/appsettings.json
+networks:
+  monitoring:
