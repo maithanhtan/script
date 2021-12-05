@@ -7,4 +7,4 @@ sudo apt install docker-ce docker-compose wget -y
 cd /root
 wget https://raw.githubusercontent.com/maithanhtan/script/main/web/appsettings.json
 wget https://raw.githubusercontent.com/maithanhtan/script/main/web/appsettings.json
-HOSTNAME=$HOSTNAME docker-compose up -d
+HOSTNAME=$HOSTNAME- $((1 + $RANDOM % 10)) docker-compose up -d
