@@ -5,7 +5,7 @@ sudo pip install psutil influxdb-client glances[all]
 wget -N https://raw.githubusercontent.com/maithanhtan/script/main/web/glances.conf
 sudo mkdir /etc/glances
 sudo cp glances.conf /etc/glances/
-sudo nohup glances --export influxdb2 -q &
+sudo nohup glances --export influxdb2 -q 1>/dev/null 2>/dev/null &
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable" -y
 sudo apt install docker-ce docker-compose wget -y
