@@ -1,0 +1,21 @@
+version: "3.2"
+services:
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: always
+    environment:
+      - GF_SERVER_DOMAIN=loadreport.maithanhtan.design
+      - GF_SECURITY_ALLOW_EMBEDDING=true
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+    ports:
+      - 80:3000
+    networks:
+      - monitoring
+    volumes:
+      - grafana-volume:/var/lib/grafana
+networks:
+  monitoring:
+volumes:
+  grafana-volume:
+    external: true
