@@ -1,0 +1,80 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "AllowedHosts": "*",
+  "TestService": {
+    "VideoStore": "store",
+    "ScreenHeight": 1080,
+    "ScreenWidth": 1920,
+    "Headless": false, //PWDEBUG = 1 DevNativeClientTag1,
+    "DefaultTimeOut": 300
+  },
+  "SignalRService": {
+    "Endpoint": "http://127.0.0.1/DataHub",
+    "UseHttp": false,
+    "StartWait": 100,
+    "Capacity": "Web",
+    "Device": "Chrome",
+    "MaxSession": 50,
+    "DebugLevel": "None", //None, Debug, Trace
+    "TaskInterval": 10000,
+    "TaskPerLoop": 100
+  },
+  "ReportServiceSettings": {
+    "Enabled": true,
+    "WriteInterval": 5000,
+    "MaxPointToWrite": 100,
+    "InfluxDBService": {
+      "Enabled": true,
+      "Endpoint": "http://127.0.0.1:8086",
+      "Token": "XMgraoowHcO2so6zgd99boLrToLJjSh2uWwhZT1Kyr1yRJ_E56LxT4ff1elq3ANX4_QWE-dvYb2jyUBF9SKfpQ==",
+      "Organization": "automation",
+      "BucketID": "automation"
+    },
+    "LineTcpSenderSettings": {
+      "Enabled": false,
+      "IPAddress": "192.168.82.41",
+      "Port": 9009
+    }
+  },
+  "Serilog": {
+    "Using": [ "Serilog.Sinks.File", "Serilog.Sinks.Console" ],
+    "MinimumLevel": "Debug",
+    "WriteTo": [
+      {
+        "Name": "Console",
+        "Args": {
+          "outputTemplate": "{Timestamp:o} [{Level:u3}] ({ThreadId}) {Message}{NewLine}{Exception}"
+        }
+      },
+      {
+        "Name": "File",
+        "Args": {
+          "path": "Debug_Log/WebAuto-Full.log",
+          "outputTemplate": "{Timestamp:o} [{Level:u3}] ({ThreadId}) {Message}{NewLine}{Exception}",
+          "rollingInterval": "Day",
+          "fileSizeLimitBytes": 104857600, //1024 * 1024 * 100 --> 100MB per file
+          "retainedFileCountLimit": 10, // Keep max 10 file --> 1GB of log storage
+          "rollOnFileSizeLimit": true
+        }
+      },
+      {
+        "Name": "File",
+        "Args": {
+          "path": "Debug_Log/WebAuto-Warning.log",
+          "outputTemplate": "{Timestamp:o} [{Level:u3}] ({ThreadId}) {Message}{NewLine}{Exception}",
+          "rollingInterval": "Day",
+          "restrictedToMinimumLevel": "Warning",
+          "fileSizeLimitBytes": 104857600, //1024 * 1024 * 100 --> 100MB per file
+          "retainedFileCountLimit": 10, // Keep max 10 file --> 1GB of log storage
+          "rollOnFileSizeLimit": true
+        }
+      }
+    ]
+  }
+}
