@@ -1,0 +1,46 @@
+version: "3.2"
+services:
+  Web_Cloud:
+    image: tonymaithanh/webauto:latest
+    container_name: Web_Cloud
+    restart: always
+    environment:
+      - ClientTag=${HOSTNAME}_Web_Cloud
+    networks:
+      - monitoring
+    volumes:
+      - type: bind
+        source: /root/web-appsettings.json
+        target: /app/appsettings.json
+  influxdb:
+    image: influxdb
+    container_name: influxdb
+    restart: always
+    ports:
+      - 8086:8086
+    networks:
+      - monitoring
+    volumes:
+      - influxdb-volume:/var/lib/influxdb
+  automation:
+    image: tonymaithanh/automation
+    container_name: automation
+    restart: always
+    ports:
+      - 80:80
+    networks:
+      - monitoring
+    volumes:
+      - type: bind
+        source: /root/automation-appsettings.json
+        target: /app/appsettings.json
+      - automation-volume:/app/automation-volume
+networks:
+  monitoring:
+volumes:
+  grafana-volume:
+    external: true
+  influxdb-volume:
+    external: true
+  automation-volume:
+    external: true
