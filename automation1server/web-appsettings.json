@@ -11,7 +11,7 @@
     "VideoStore": "store",
     "ScreenHeight": 1080,
     "ScreenWidth": 1920,
-    "Headless": false, //PWDEBUG = 1 DevNativeClientTag1,
+    "Headless": true, //PWDEBUG = 1 DevNativeClientTag1,
     "DefaultTimeOut": 300
   },
   "SignalRService": {
