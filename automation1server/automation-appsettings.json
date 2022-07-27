@@ -23,28 +23,31 @@
       "ReopenBroswer",
       "RunSuite",
       "RunScript",
-      "OpenPageWithRecord"
+      "OpenPageWithRecord",
+      "RunScriptWithReport"
     ], //Key Web cannot be changed
     "MobileSupportedAction": [], //Key Mobile cannot be changed
     "MailSetting": {
       "Enabled": true,
-      "MailFrom": "tony@getvero.co",
+      "MailFrom": "tony@maithanhtan.design",
       "MailFromName": "AutomationAgent",
-      "SMTPServer": "smtppro.zoho.com",
+      "SMTPServer": "in-v3.mailjet.com",
       "SMTPPort": 465,
       "SSL": true,
-      "SMTPUserName": "tony@getvero.co",
-      "SMTPPassword": "",
-      "TextBodyTemplate": "MailTemplate/email.txt",
-      "HTMLBodyTemplate": "MailTemplate/email.html",
+      "SMTPUserName": "37639a39a409c96f1201cb48c3586c0f",
+      "SMTPPassword": "26bc520289c985160a2c799034b273b2",
+      "TextBodyTemplate": "MailTemplate\\email.txt",
+      "HTMLBodyTemplate": "MailTemplate\\email.html",
       "LinkedImagePath": "/app/MailTemplate"
-    }
+    },
+    "ServiceKey": "7FijrVbM1D_YTU8xUNuigsD_6D_V0hMdJK0jgX1ELqjrHVEQdLp",
+    "ResourceStore": "/app/automation-volume/video"
   },
   "InfluxDBService": {
     "Enabled": true,
     "Endpoint": "http://127.0.0.1:8086",
     "Token": "lg1fG7xZnY7Wad_C9Eb3YUgll7oflmwvnfSU8v9TQesk9oVy_uh081uyaug44r1K0dZp--uFnKQ-HFrsrpBIBg==",
-    "Organization": "getvero",
+    "Organization": "automation",
     "BucketID": "automation"
   },
   "Jwt": {
