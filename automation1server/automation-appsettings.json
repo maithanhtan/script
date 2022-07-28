@@ -45,8 +45,8 @@
   },
   "InfluxDBService": {
     "Enabled": true,
-    "Endpoint": "http://127.0.0.1:8086",
-    "Token": "lg1fG7xZnY7Wad_C9Eb3YUgll7oflmwvnfSU8v9TQesk9oVy_uh081uyaug44r1K0dZp--uFnKQ-HFrsrpBIBg==",
+    "Endpoint": "http://influx.maithanhtan.design:8086",
+    "Token": "XMgraoowHcO2so6zgd99boLrToLJjSh2uWwhZT1Kyr1yRJ_E56LxT4ff1elq3ANX4_QWE-dvYb2jyUBF9SKfpQ==",
     "Organization": "automation",
     "BucketID": "automation"
   },
