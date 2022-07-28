@@ -65,7 +65,7 @@
   },
   "Urls": "http://*:80;",
   "CorsService": {
-    "Url": [ "http://1711-3001.hsc.com.vn:5000", "https://1711-3001.hsc.com.vn:5001" ]
+    "Url": [ "http://1711-3001.hsc.com.vn:5000", "https://1711-3001.hsc.com.vn:5001", "https://trace.playwright.dev", "https://cloud-auto.web.app" ]
   },
   "Serilog": {
     "Using": [ "Serilog.Sinks.File", "Serilog.Sinks.Console" ],
