@@ -15,12 +15,13 @@
     "DefaultTimeOut": 300
   },
   "SignalRService": {
-    "Endpoint": "http://127.0.0.1/DataHub",
+    "Endpoint": "https://loadmaster.maithanhtan.design/DataHub",
+    "APIEndpoint": "https://loadmaster.maithanhtan.design/v2/Task",
     "UseHttp": false,
     "StartWait": 100,
     "Capacity": "Web",
     "Device": "Chrome",
-    "MaxSession": 50,
+    "MaxSession": 10,
     "DebugLevel": "None", //None, Debug, Trace
     "TaskInterval": 10000,
     "TaskPerLoop": 100
@@ -29,9 +30,9 @@
     "Enabled": true,
     "WriteInterval": 5000,
     "MaxPointToWrite": 100,
-    "InfluxDBService": {
+    "InfluxDBServiceSettings": {
       "Enabled": true,
-      "Endpoint": "http://127.0.0.1:8086",
+      "Endpoint": "http://influx.maithanhtan.design:8086",
       "Token": "XMgraoowHcO2so6zgd99boLrToLJjSh2uWwhZT1Kyr1yRJ_E56LxT4ff1elq3ANX4_QWE-dvYb2jyUBF9SKfpQ==",
       "Organization": "automation",
       "BucketID": "automation"
