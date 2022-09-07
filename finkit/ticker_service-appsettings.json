@@ -1,0 +1,61 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+
+  "AllowedHosts": "*",
+  "Urls": "http://*:5002;",
+  "Serilog": {
+    "Using": [ "Serilog.Sinks.File", "Serilog.Sinks.Console", "Serilog.Enrichers.Process", "Serilog.Enrichers.Thread", "Serilog.Enrichers.Environment" ],
+    "Enrich": [ "FromLogContext", "WithProcessName", "WithMachineName", "WithThreadId" ],
+    "MinimumLevel": "Debug",
+    "WriteTo": [
+      {
+        "Name": "Console",
+        "Args": {
+          "restrictedToMinimumLevel": "Warning",
+          "outputTemplate": "{Timestamp:o} [{Level:u3}] ({ThreadId}) {Message}{NewLine}{Exception}"
+        }
+      }
+    ],
+    "Properties": {
+      "Application": "hmmPortal.service.tickCandle",
+      "Environment": "Dev"
+    }
+  },
+  "MQServiceSettings": {
+    "PublisherEnabled": true,
+    "PublisherThreadSleepIntervalMs": 1,
+    "PublisherSocket": ">tcp://127.0.0.1:443",
+    "PublisherTopic": [ "OhlcvDTO" ],
+    "PublisherSendHighWatermark": 1000,
+    "SubscriberEnabled": true,
+    "SubscriberSocket": ">tcp://127.0.0.1:1234",
+    "SubscriberTopic": [ "VNIndex", "TradeLogDTO" ],
+    "SubscriberReceiveHighWatermark": 1000
+  },
+  "TickServiceSettings": {
+    "SupportedResolution": [ 60 ], //1min, 3min, 5min, 15min, 30min, 45min, 1hour, 2hour, 3hour, 4 hours, 1day 
+    "StoreHistoryData": false,
+    "HistoryDayToGet": "-30d",
+    "QueueProcessIntervalMs": 1,
+    "WriteTimeOut": 120,
+    "WriteInterval": 1000,
+    "MaxPointToWrite": 1000,
+    "InfluxDBSettings": {
+      "Enabled": false,
+      "Endpoint": "http://influxdb.hmm-report.hsc.com.vn",
+      "BucketID": "market_data_insights",
+      "Token": "amyRpf0ZqGDPQ8a55VI_DBvoHUsELLQmgszAlKlNUyv5UB2yhb_NQ2_LOb41-i1dwjvA_ihgH4Gb_wiV_RZ7Sw==",
+      "Organization": "finance_analytics"
+    },
+    "QuestDBSettings": {
+      "Enabled": false,
+      "EndpointIP": "192.168.17.74",
+      "EndpointPort": 9009
+    }
+  }
+}
