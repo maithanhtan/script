@@ -1,0 +1,29 @@
+version: "3.2"
+services:
+  broker_service:
+    image: tonymaithanh/hmmPortal.broker:latest
+    container_name: broker_service
+    restart: always
+    ports:
+      - 443:5678
+    networks:
+      - core
+    volumes:
+      - broker_service-volume:/app/Debug_Log
+  backend_service:
+    image: tonymaithanh/Finkit_BackEnd:latest
+    container_name: backend_service
+    restart: always
+    ports:
+      - 80:5001
+    networks:
+      - core
+    volumes:
+      - backend_service-volume:/app/Debug_Log
+networks:
+  monitoring:
+volumes:
+  broker_service-volume:
+    external: true   
+  backend_service-volume:
+    external: true
