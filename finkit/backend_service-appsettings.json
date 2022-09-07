@@ -1,0 +1,92 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "Urls": "http://*:80;",
+  "Serilog": {
+    "Using": [ "Serilog.Sinks.File", "Serilog.Sinks.Console", "Serilog.Enrichers.Process", "Serilog.Enrichers.Thread", "Serilog.Enrichers.Environment" ],
+    "Enrich": [ "FromLogContext", "WithProcessName", "WithMachineName", "WithThreadId" ],
+    "MinimumLevel": "Debug",
+    "WriteTo": [
+      {
+        "Name": "Console",
+        "Args": {
+          "restrictedToMinimumLevel": "Warning",
+          "outputTemplate": "{Timestamp:o} [{Level:u3}] ({ThreadId}) {Message}{NewLine}{Exception}"
+        }
+      },
+      {
+        "Name": "File",
+        "Args": {
+          "path": "Debug_Log/Finkit-BackEnd.log",
+          "outputTemplate": "{Timestamp:o} [{Level:u3}] ({ThreadId}) {Message}{NewLine}{Exception}",
+          "rollingInterval": "Day",
+          "restrictedToMinimumLevel": "Debug",
+          "fileSizeLimitBytes": 104857600, //1024 * 1024 * 100 --> 100MB per file
+          "retainedFileCountLimit": 10, // Keep max 10 file --> 1GB of log storage
+          "rollOnFileSizeLimit": true
+        }
+      },
+      {
+        "Name": "File",
+        "Args": {
+          "path": "Debug_Log/Finkit-BackEnd-Warning.log",
+          "outputTemplate": "{Timestamp:o} [{Level:u3}] ({ThreadId}) {Message}{NewLine}{Exception}",
+          "rollingInterval": "Day",
+          "restrictedToMinimumLevel": "Warning",
+          "fileSizeLimitBytes": 104857600, //1024 * 1024 * 100 --> 100MB per file
+          "retainedFileCountLimit": 10, // Keep max 10 file --> 1GB of log storage
+          "rollOnFileSizeLimit": true
+        }
+      }
+    ],
+    "Properties": {
+      "Application": "Finkit-BackEnd",
+      "Environment": "Dev"
+    }
+  },
+  "FirebaseAuthentication": {
+    "Issuer": "https://securetoken.google.com/fin-kit",
+    "Audience": "fin-kit"
+  },
+  "AllowedCors": [ "http://localhost:3000", "http://localhost:5001", "http://192.168.82.41:5001", "https://fin-kit.web.app", "https://app.finkit.io" ],
+  "MQServiceSettings": {
+    "PublisherEnabled": false,
+    "PublisherThreadSleepIntervalMs": 1,
+    "PublisherSocket": ">tcp://127.0.0.1:443",
+    "PublisherTopic": [],
+    "PublisherSendHighWatermark": 1000,
+    "SubscriberEnabled": true,
+    "SubscriberSocket": ">tcp://127.0.0.1:1234",
+    "SubscriberTopic": [ "ProductSummary", "OhlcvDTO" ],
+    "SubscriberReceiveHighWatermark": 1000
+  },
+  "APIServiceSettings": {
+    "TickServiceEndpoint": "http://127.0.0.1:5002",
+    "QueueProcessIntervalMs": 1,
+    "SubscriberTopicWorker": {
+      "ProductSummary": 1
+    },
+    "APIKey": "amyRpf0ZqGDPQ8a55VI_DBvoHUsELLQmgszAlKlNUy999",
+    "GraphQLURI": "https://finfo-iboard.ssi.com.vn/graphql"
+  },
+  "GoogleCloudServiceSettings": {
+    "ProjectId": "fin-kit",
+    "ErrorReporting": {
+      "ServiceName": "finkit-backend",
+      "Version": "1.0.0"
+    },
+    "GOOGLE_APPLICATION_CREDENTIALS": "fin-kit.json"
+  },
+  "PDFServiceSettings": {
+    "PathStoreUnreconigeData": "temp",
+    "volCols": [],
+    "priceCols": [],
+    "feeCols": [],
+    "taxCols": []
+  }
+}
