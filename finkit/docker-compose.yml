@@ -23,6 +23,16 @@ services:
         source: /root/backend_service-appsettings.json
         target: /app/appsettings.json
       - backend_service-volume:/app/Debug_Log
+  ticker_service:
+    image: tonymaithanh/hmmportalservicetickcandle:latest
+    container_name: ticker_service
+    restart: always
+    ports:
+      - 5002:5002
+    volumes:
+      - type: bind
+        source: /root/ticker_service-appsettings.json
+        target: /app/appsettings.json
 volumes:
   broker_service-volume:
     external: false   
