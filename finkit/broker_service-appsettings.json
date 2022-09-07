@@ -1,0 +1,56 @@
+{
+  "BrokerServiceSettings": {
+    "PublisherSocket": "@tcp://*:1234",
+    "SubscriberSocket": "@tcp://*:443"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "Urls": "http://*:5000;",
+  "Serilog": {
+    "Using": [ "Serilog.Sinks.File", "Serilog.Sinks.Console", "Serilog.Enrichers.Process", "Serilog.Enrichers.Thread", "Serilog.Enrichers.Environment" ],
+    "Enrich": [ "FromLogContext", "WithProcessName", "WithMachineName", "WithThreadId" ],
+    "MinimumLevel": "Debug",
+    "WriteTo": [
+      {
+        "Name": "Console",
+        "Args": {
+          "restrictedToMinimumLevel": "Debug",
+          "outputTemplate": "{Timestamp:o} [{Level:u3}] ({ThreadId}) {Message}{NewLine}{Exception}"
+        }
+      },
+      {
+        "Name": "File",
+        "Args": {
+          "path": "Debug_Log/hmmPortal.broker.log",
+          "outputTemplate": "{Timestamp:o} [{Level:u3}] ({ThreadId}) {Message}{NewLine}{Exception}",
+          "rollingInterval": "Day",
+          "restrictedToMinimumLevel": "Debug",
+          "fileSizeLimitBytes": 104857600, //1024 * 1024 * 100 --> 100MB per file
+          "retainedFileCountLimit": 10, // Keep max 10 file --> 1GB of log storage
+          "rollOnFileSizeLimit": true
+        }
+      },
+      {
+        "Name": "File",
+        "Args": {
+          "path": "Debug_Log/hmmPortal.broker-Warning.log",
+          "outputTemplate": "{Timestamp:o} [{Level:u3}] ({ThreadId}) {Message}{NewLine}{Exception}",
+          "rollingInterval": "Day",
+          "restrictedToMinimumLevel": "Warning",
+          "fileSizeLimitBytes": 104857600, //1024 * 1024 * 100 --> 100MB per file
+          "retainedFileCountLimit": 10, // Keep max 10 file --> 1GB of log storage
+          "rollOnFileSizeLimit": true
+        }
+      }
+    ],
+    "Properties": {
+      "Application": "hmmPortal.broker",
+      "Environment": "Dev"
+    }
+  }
+}
