@@ -6,8 +6,6 @@ services:
     restart: always
     ports:
       - 443:5678
-    networks:
-      - core
     volumes:
       - broker_service-volume:/app/Debug_Log
   backend_service:
@@ -16,14 +14,12 @@ services:
     restart: always
     ports:
       - 80:5001
-    networks:
-      - core
     volumes:
       - backend_service-volume:/app/Debug_Log
 networks:
   monitoring:
 volumes:
   broker_service-volume:
-    external: true   
+    external: false   
   backend_service-volume:
-    external: true
+    external: false
