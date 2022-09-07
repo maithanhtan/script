@@ -15,6 +15,9 @@ services:
     ports:
       - 80:5001
     volumes:
+      - type: bind
+        source: /root/backend_service-appsettings.json
+        target: /app/appsettings.json
       - backend_service-volume:/app/Debug_Log
 networks:
   monitoring:
