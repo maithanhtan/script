@@ -5,15 +5,19 @@ services:
     container_name: broker_service
     restart: always
     ports:
-      - 443:5678
+      - 443:443
+      - 1234:1234
     volumes:
+      - type: bind
+        source: /root/broker_service-appsettings.json
+        target: /app/appsettings.json
       - broker_service-volume:/app/Debug_Log
   backend_service:
     image: tonymaithanh/finkitbackend:latest
     container_name: backend_service
     restart: always
     ports:
-      - 80:5001
+      - 80:80
     volumes:
       - type: bind
         source: /root/backend_service-appsettings.json
