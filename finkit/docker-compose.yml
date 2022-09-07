@@ -1,7 +1,7 @@
 version: "3.2"
 services:
   broker_service:
-    image: tonymaithanh/hmmPortal.broker:latest
+    image: tonymaithanh/hmmportalbroker:latest
     container_name: broker_service
     restart: always
     ports:
@@ -11,7 +11,7 @@ services:
     volumes:
       - broker_service-volume:/app/Debug_Log
   backend_service:
-    image: tonymaithanh/Finkit_BackEnd:latest
+    image: tonymaithanh/finkitbackend:latest
     container_name: backend_service
     restart: always
     ports:
