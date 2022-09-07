@@ -19,8 +19,6 @@ services:
         source: /root/backend_service-appsettings.json
         target: /app/appsettings.json
       - backend_service-volume:/app/Debug_Log
-networks:
-  monitoring:
 volumes:
   broker_service-volume:
     external: false   
